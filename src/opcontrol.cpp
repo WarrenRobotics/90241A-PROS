@@ -75,8 +75,28 @@ void opcontrol() {
 			driveRFMotor.move(rightJoy_y);
 			driveRBMotor.move(rightJoy_y);
 			//Flywheel
-			if(btnX)
+			if(btnX){
 				flyWheelToggle = true;
-			if(btnA)
+			}
+			if(btnA){
 				flyWheelToggle = true;
-}
+			}
+			if(flyWheelToggle){
+				fwUpperMotor.move(127);
+				fwLowerMotor.move(127);
+			}else{
+				fwUpperMotor.move(0);
+				fwLowerMotor.move(0);
+			}
+			//Intake
+			if(rightTriggerUp){
+				intakeMotor.move(102);
+			}else if(rightTriggerDown){
+				intakeMotor.move(-102);
+			}else{
+				intakeMotor.move(0);
+			}
+			//Dont hog!
+			pros::delay(2);
+		}//end infinite loop
+}//end opcontrol
