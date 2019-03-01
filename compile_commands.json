@@ -28,11 +28,11 @@
             "-fdiagnostics-color",
             "--std=gnu++17",
             "-o",
-            "bin/initialize.cpp.o",
-            "src\\initialize.cpp"
+            "C:/Users/Don/AppData/Local/Temp/tmp4p4bgplq/autonomous.cpp.o",
+            "src\\autonomous.cpp"
         ],
         "directory": "C:\\Users\\Don\\Documents\\RobotPrograms\\PROS\\90241A-PROS",
-        "file": "src\\initialize.cpp"
+        "file": "src\\autonomous.cpp"
     },
     {
         "arguments": [
@@ -63,7 +63,7 @@
             "-fdiagnostics-color",
             "--std=gnu++17",
             "-o",
-            "bin/opcontrol.cpp.o",
+            "C:/Users/Don/AppData/Local/Temp/tmp4p4bgplq/opcontrol.cpp.o",
             "src\\opcontrol.cpp"
         ],
         "directory": "C:\\Users\\Don\\Documents\\RobotPrograms\\PROS\\90241A-PROS",
@@ -98,10 +98,10 @@
             "-fdiagnostics-color",
             "--std=gnu++17",
             "-o",
-            "bin/autonomous.cpp.o",
-            "src\\autonomous.cpp"
+            "C:/Users/Don/AppData/Local/Temp/tmp4p4bgplq/initialize.cpp.o",
+            "src\\initialize.cpp"
         ],
         "directory": "C:\\Users\\Don\\Documents\\RobotPrograms\\PROS\\90241A-PROS",
-        "file": "src\\autonomous.cpp"
+        "file": "src\\initialize.cpp"
     }
 ]
