@@ -67,28 +67,80 @@ void opcontrol() {
 			driveLBMotor.move(leftJoy_y);
 			driveRFMotor.move(rightJoy_y);
 			driveRBMotor.move(rightJoy_y);
-			//Flywheel
-			if(btnX){
-				flyWheelToggle = true;
+			if(driverMode == 0){
+				//Flywheel
+				if(btnX){
+					flyWheelToggle = true;
+				}
+				if(btnA){
+					flyWheelToggle = true;
+				}
+				if(flyWheelToggle){
+					fwUpperMotor.move(127);
+					fwLowerMotor.move(127);
+				}else{
+					fwUpperMotor.move(0);
+					fwLowerMotor.move(0);
+				}
+				//Intake
+				if(rightTriggerUp){
+					intakeMotor.move(102);
+				}else if(rightTriggerDown){
+					intakeMotor.move(-102);
+				}else{
+					intakeMotor.move(0);
+				}
 			}
-			if(btnA){
-				flyWheelToggle = true;
+			if(driverMode == 1){
+				//Flywheel
+				if(btnX){
+					flyWheelToggle = true;
+				}
+				if(btnA){
+					flyWheelToggle = true;
+				}
+				if(flyWheelToggle){
+					fwUpperMotor.move(127);
+					fwLowerMotor.move(127);
+				}else{
+					fwUpperMotor.move(0);
+					fwLowerMotor.move(0);
+				}
+				//Intake
+				if(rightTriggerUp){
+					intakeMotor.move(102);
+				}else if(rightTriggerDown){
+					intakeMotor.move(-102);
+				}else{
+					intakeMotor.move(0);
+				}
 			}
-			if(flyWheelToggle){
-				fwUpperMotor.move(127);
-				fwLowerMotor.move(127);
-			}else{
-				fwUpperMotor.move(0);
-				fwLowerMotor.move(0);
+			if(driverMode == 2){
+				//Flywheel
+				if(leftTriggerUp){
+					flyWheelToggle = true;
+				}
+				if(leftTriggerDown){
+					flyWheelToggle = true;
+				}
+				if(flyWheelToggle){
+					fwUpperMotor.move(127);
+					fwLowerMotor.move(127);
+				}else{
+					fwUpperMotor.move(0);
+					fwLowerMotor.move(0);
+				}
+				//Intake
+				if(rightTriggerUp){
+					intakeMotor.move(102);
+				}else if(rightTriggerDown){
+					intakeMotor.move(-102);
+				}else{
+					intakeMotor.move(0);
+				}
 			}
-			//Intake
-			if(rightTriggerUp){
-				intakeMotor.move(102);
-			}else if(rightTriggerDown){
-				intakeMotor.move(-102);
-			}else{
-				intakeMotor.move(0);
-			}
+
+
 			//Dont hog!
 			pros::delay(2);
 		}//end infinite loop

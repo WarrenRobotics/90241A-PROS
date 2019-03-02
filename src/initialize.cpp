@@ -17,7 +17,10 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-
+	//Initialize menu selector vairables
+	autonomousMode = 1;
+	driverMode = 0;
+	optionalMode = 0;
 }
 
 /**
@@ -39,5 +42,5 @@ void disabled() {
  * starts.
  */
 void competition_initialize() {
-	
+
 }
