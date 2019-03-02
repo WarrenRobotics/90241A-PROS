@@ -15,16 +15,6 @@
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	//Set up controller
-		pros::Controller master(pros::E_CONTROLLER_MASTER);
-		//Set up motors
-		pros::Motor driveLFMotor (DRIVE_LEFT_FRONT_PORT);
-		pros::Motor driveLBMotor (DRIVE_LEFT_BACK_PORT);
-		pros::Motor driveRFMotor (DRIVE_RIGHT_FRONT_PORT, true);
-		pros::Motor driveRBMotor (DRIVE_RIGHT_BACK_PORT, true);
-		pros::Motor fwLowerMotor (FLYWHEEL_LOWER_PORT, true);
-		pros::Motor fwUpperMotor (FLYWHEEL_UPPER_PORT);
-		pros::Motor intakeMotor (INTAKE_PORT);
 		//Initialize shortcut variables
 		short leftJoy_x;
 		short leftJoy_y;
@@ -45,7 +35,7 @@ void opcontrol() {
 		//Initialize driver control variables
 		bool flyWheelToggle = false;
 		while (true) {
-			//Set variables
+			//Set shortcut variables
 			leftJoy_x = (short)master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_X);
 			leftJoy_y = (short)master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 			rightJoy_x = (short)master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);

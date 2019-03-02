@@ -248,6 +248,11 @@
                 "version": "3.3.12"
             }
         },
-        "upload_options": {}
+        "upload_options": {
+            "compress_bin": true,
+            "description": "PROS Program",
+            "remote_name": "90241A-PROS",
+            "slot": 3
+        }
     }
 }

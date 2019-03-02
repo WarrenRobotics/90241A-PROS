@@ -1,12 +1,11 @@
-
-/*
-  file ports.h
-
-  This file is a current work in process. It is used to define the ports of
-  each device plugged into the V5 brain.
+/**
+  * file ports.h
+  *
+  * This file is a current work in process. It is used to define the ports of
+  * each device plugged into the V5 brain.
 */
-#ifndef  _PROS_PORTS_H
-#define _PROS_PORTS_H
+#ifndef  _PORTS_H
+#define _PORTS_H
 
 #define DRIVE_LEFT_FRONT_PORT                 10
 #define DRIVE_LEFT_BACK_PORT                  2
