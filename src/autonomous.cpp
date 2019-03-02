@@ -11,4 +11,16 @@
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+  //Controller
+	pros::Controller master(pros::E_CONTROLLER_MASTER);
+	//Motors
+	pros::Motor driveLFMotor(DRIVE_LEFT_FRONT_PORT);
+	pros::Motor driveLBMotor(DRIVE_LEFT_BACK_PORT);
+	pros::Motor driveRFMotor(DRIVE_RIGHT_FRONT_PORT);
+	pros::Motor driveRBMotor(DRIVE_RIGHT_BACK_PORT);
+	pros::Motor fwUpperMotor(FLYWHEEL_UPPER_PORT);
+	pros::Motor fwLowerMotor(FLYWHEEL_LOWER_PORT);
+	pros::Motor intakeMotor(INTAKE_PORT);
+  
+}

@@ -1,11 +1,11 @@
 /**
   * file ports.h
   *
-  * This file is a current work in process. It is used to define the ports of
-  * each device plugged into the V5 brain.
-*/
-#ifndef  _PORTS_H
-#define _PORTS_H
+  * This file is used to define the ports of each device plugged
+  * into the V5 brain.
+  */
+#ifndef  PORTS_H_
+#define PORTS_H_
 
 #define DRIVE_LEFT_FRONT_PORT                 10
 #define DRIVE_LEFT_BACK_PORT                  2
@@ -15,4 +15,4 @@
 #define FLYWHEEL_UPPER_PORT                   11
 #define INTAKE_PORT                           3
 
-#endif
+#endif //PORTS_H_
