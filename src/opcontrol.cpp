@@ -1,5 +1,15 @@
 #include "main.h"
 
+//Controller
+pros::Controller master(pros::E_CONTROLLER_MASTER);
+//Motors
+pros::Motor driveLFMotor(DRIVE_LEFT_FRONT_PORT);
+pros::Motor driveLBMotor(DRIVE_LEFT_BACK_PORT);
+pros::Motor driveRFMotor(DRIVE_RIGHT_FRONT_PORT);
+pros::Motor driveRBMotor(DRIVE_RIGHT_BACK_PORT);
+pros::Motor fwUpperMotor(FLYWHEEL_UPPER_PORT);
+pros::Motor fwLowerMotor(FLYWHEEL_LOWER_PORT);
+pros::Motor intakeMotor(INTAKE_PORT);
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -15,16 +25,13 @@
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-		//Controller
-		pros::Controller master(pros::E_CONTROLLER_MASTER);
-		//Motors
-		pros::Motor driveLFMotor(DRIVE_LEFT_FRONT_PORT);
-		pros::Motor driveLBMotor(DRIVE_LEFT_BACK_PORT);
-		pros::Motor driveRFMotor(DRIVE_RIGHT_FRONT_PORT);
-		pros::Motor driveRBMotor(DRIVE_RIGHT_BACK_PORT);
-		pros::Motor fwUpperMotor(FLYWHEEL_UPPER_PORT);
-		pros::Motor fwLowerMotor(FLYWHEEL_LOWER_PORT);
-		pros::Motor intakeMotor(INTAKE_PORT);
+		driveLFMotor.set_reversed(false);
+		driveLBMotor.set_reversed(false);
+		driveRFMotor.set_reversed(true);
+		driveRBMotor.set_reversed(true);
+		fwUpperMotor.set_reversed(false);
+		fwLowerMotor.set_reversed(true);
+		intakeMotor.set_reversed(false);
 		//Initialize shortcut variables
 		short leftJoy_x;
 		short leftJoy_y;
