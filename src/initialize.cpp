@@ -1,14 +1,10 @@
 #include "main.h"
 
-void on_center_button() {
-	static bool pressed = false;
-	pressed = !pressed;
-	if (pressed) {
-		pros::lcd::set_text(2, "I was pressed!");
-	} else {
-		pros::lcd::clear_line(2);
-	}
-}
+//Define ONLY in this file. See initial values in the initialize function.
+//Once defined here, these variables do NOT need to be re-defined in other files
+int autonomousMode;
+int driverMode;
+int optionalMode;
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.

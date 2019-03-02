@@ -67,13 +67,14 @@ void opcontrol() {
 			driveLBMotor.move(leftJoy_y);
 			driveRFMotor.move(rightJoy_y);
 			driveRBMotor.move(rightJoy_y);
+			//Carlos
 			if(driverMode == 0){
 				//Flywheel
 				if(btnX){
 					flyWheelToggle = true;
 				}
-				if(btnA){
-					flyWheelToggle = true;
+				if(btnY){
+					flyWheelToggle = false;
 				}
 				if(flyWheelToggle){
 					fwUpperMotor.move(127);
@@ -91,6 +92,7 @@ void opcontrol() {
 					intakeMotor.move(0);
 				}
 			}
+			//Rahul
 			if(driverMode == 1){
 				//Flywheel
 				if(btnX){
@@ -115,13 +117,14 @@ void opcontrol() {
 					intakeMotor.move(0);
 				}
 			}
+			//Sam
 			if(driverMode == 2){
 				//Flywheel
 				if(leftTriggerUp){
 					flyWheelToggle = true;
 				}
 				if(leftTriggerDown){
-					flyWheelToggle = true;
+					flyWheelToggle = false;
 				}
 				if(flyWheelToggle){
 					fwUpperMotor.move(127);
