@@ -1,16 +1,5 @@
 #include "main.h"
 
-//Controller
-pros::Controller master(pros::E_CONTROLLER_MASTER);
-//Motors
-pros::Motor driveLFMotor(DRIVE_LEFT_FRONT_PORT);
-pros::Motor driveLBMotor(DRIVE_LEFT_BACK_PORT);
-pros::Motor driveRFMotor(DRIVE_RIGHT_FRONT_PORT, true);
-pros::Motor driveRBMotor(DRIVE_RIGHT_BACK_PORT, true);
-pros::Motor fwUpperMotor(FLYWHEEL_UPPER_PORT);
-pros::Motor fwLowerMotor(FLYWHEEL_LOWER_PORT, true);
-pros::Motor intakeMotor(INTAKE_PORT);
-
 /*-----------Autonomous Movement Functions--------------*/
 /**
   * Drives the bot in a specified direction for a certain distance. The
@@ -211,33 +200,57 @@ void stopIntake(){
 void autonomous() {
   //RedFlag Park
   if(autonomousMode == 1){
+      //Drive to toggle low flag
       driveFor(true, 4, 200, true);
       pros::delay(10);
+      //Drive back to adjacenit tile
       driveFor(false, 2, 200, true);
       pros::delay(10);
+      //Start up flywheel
       setFlywheel(200);
+      //Wait until motors are at 95% of target speed
       while(fwUpperMotor.get_actual_velocity() < 190
         || fwLowerMotor.get_actual_velocity() < 190){}
+      //Move ball to shoot
       setIntake(true, 200);
+      //Wait for ball to get shot
       pros::delay(800);
+      //Stop flywheel and intake
       stopFlywheel();
       stopIntake();
+      //Turn bot right 90 degrees
       turnRight(true, 1, 160, true);
+      //Set intake to flip cap
       setIntake(false, 200);
+      //Wait for intake to reach some decent level of speed
       pros::delay(100);
+      //Drive to flip cap
       driveFor(true, 2, 130, true);
+      //Stop the intake
       stopIntake();
+      //Turn right 90 degrees
       turnRight(true, 1, 160, true);
+      //Delay so bot doesnt over/under steer
       pros::delay(100);
+      //Drive to adjacent tile
       driveFor(true, 2, 160, true);
+      //Delay so bot can turn more accruately
       pros::delay(50);
+      //Turn left 90 degrees
       turnLeft(true, 1, 130, true);
+      //Delay so bot doesn't over/under steer
       pros::delay(100);
+      //Set intake to scoop ball in
       setIntake(true, 200);
+      //Drive to the cap to intake ball
       driveFor(true, 1.1, 160, true);
+      //Stop intake
       stopIntake();
+      //Delay so bot can turn accruately
       pros::delay(100);
+      //Turn right 90 degrees to face alliance park
       turnRight(true, 1, 160, true);
+      //Drive onto alliance park 
       driveFor(true, 1.5, 200, true);
   }
   //RedFlag NoPark

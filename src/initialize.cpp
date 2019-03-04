@@ -2,9 +2,19 @@
 
 //Define ONLY in this file. See initial values in the initialize function.
 //Once defined here, these variables do NOT need to be re-defined in other files
+//Controlling variables
 int autonomousMode;
 int driverMode;
 int optionalMode;
+//Devices
+pros::Controller master(pros::E_CONTROLLER_MASTER);
+pros::Motor driveLFMotor(DRIVE_LEFT_FRONT_PORT);
+pros::Motor driveLBMotor(DRIVE_LEFT_BACK_PORT);
+pros::Motor driveRFMotor(DRIVE_RIGHT_FRONT_PORT, true);
+pros::Motor driveRBMotor(DRIVE_RIGHT_BACK_PORT, true);
+pros::Motor fwUpperMotor(FLYWHEEL_UPPER_PORT);
+pros::Motor fwLowerMotor(FLYWHEEL_LOWER_PORT, true);
+pros::Motor intakeMotor(INTAKE_PORT);
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.

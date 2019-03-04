@@ -1,16 +1,5 @@
 #include "main.h"
 
-//Controller
-pros::Controller master(pros::E_CONTROLLER_MASTER);
-//Motors
-pros::Motor driveLFMotor(DRIVE_LEFT_FRONT_PORT);
-pros::Motor driveLBMotor(DRIVE_LEFT_BACK_PORT);
-pros::Motor driveRFMotor(DRIVE_RIGHT_FRONT_PORT);
-pros::Motor driveRBMotor(DRIVE_RIGHT_BACK_PORT);
-pros::Motor fwUpperMotor(FLYWHEEL_UPPER_PORT);
-pros::Motor fwLowerMotor(FLYWHEEL_LOWER_PORT);
-pros::Motor intakeMotor(INTAKE_PORT);
-
 /**
  * Runs the operator control code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -25,6 +14,7 @@ pros::Motor intakeMotor(INTAKE_PORT);
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+		//Set initial reversing
 		driveLFMotor.set_reversed(false);
 		driveLBMotor.set_reversed(false);
 		driveRFMotor.set_reversed(true);
@@ -149,8 +139,6 @@ void opcontrol() {
 					intakeMotor.move(0);
 				}
 			}
-
-
 			//Dont hog!
 			pros::delay(2);
 		}//end infinite loop
