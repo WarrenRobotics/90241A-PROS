@@ -13,6 +13,7 @@
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
+
 void opcontrol() {
 		//Set initial reversing
 		driveLFMotor.set_reversed(false);
@@ -60,12 +61,13 @@ void opcontrol() {
 			btnLeft = master.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT);
 			btnRight = master.get_digital(pros::E_CONTROLLER_DIGITAL_RIGHT);
 			//Drivetrain
-			driveLFMotor.move(leftJoy_y);
-			driveLBMotor.move(leftJoy_y);
-			driveRFMotor.move(rightJoy_y);
-			driveRBMotor.move(rightJoy_y);
+			driveLFMotor.move(-leftJoy_y);
+			driveLBMotor.move(-leftJoy_y);
+			driveRFMotor.move(-rightJoy_y);
+			driveRBMotor.move(-rightJoy_y);
 			//Carlos
-			if(driverMode == 0){
+			//TODO: Replace conditon with "driverMode == "Carlos""
+			if(false){
 				//Flywheel
 				if(btnX){
 					flyWheelToggle = true;
@@ -90,7 +92,8 @@ void opcontrol() {
 				}
 			}
 			//Rahul
-			if(driverMode == 1){
+			//TODO: Replace conditon with "driverMode == "Rahul""
+			if(false){
 				//Flywheel
 				if(btnX){
 					flyWheelToggle = true;
@@ -115,7 +118,8 @@ void opcontrol() {
 				}
 			}
 			//Sam
-			if(driverMode == 2){
+			//TODO: Replace conditon with "driverMode == "Sam""
+			if(true){
 				//Flywheel
 				if(leftTriggerUp){
 					flyWheelToggle = true;

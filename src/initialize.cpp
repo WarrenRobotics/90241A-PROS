@@ -1,11 +1,11 @@
 #include "main.h"
 
-//Define ONLY in this file. See initial values in the initialize function.
-//Once defined here, these variables do NOT need to be re-defined in other files
+/*
+Define ONLY in this file. See initial values in the initialize function.
+Once defined here, these variables do NOT need to be re-defined in other files
+*/
 //Controlling variables
-int autonomousMode;
-int driverMode;
-int optionalMode;
+
 //Devices
 pros::Controller master(pros::E_CONTROLLER_MASTER);
 pros::Motor driveLFMotor(DRIVE_LEFT_FRONT_PORT);
@@ -23,10 +23,9 @@ pros::Motor intakeMotor(INTAKE_PORT);
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	//Initialize menu selector vairables
-	autonomousMode = 1;
-	driverMode = 0;
-	optionalMode = 0;
+	//Start pre-autonomous menu task
+	pros::Task menu (menu_task, (void*)"PROS", TASK_PRIORITY_DEFAULT,
+										TASK_STACK_DEPTH_DEFAULT, "Pre-Autonomous Menu");
 }
 
 /**

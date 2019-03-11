@@ -43,17 +43,7 @@
 //#include "pros/api_legacy.h"
 #include "pros/apix.h"
 #include "library.h"
-
-//Controller
-extern pros::Controller master;
-//Motors
-extern pros::Motor driveLFMotor;
-extern pros::Motor driveLBMotor;
-extern pros::Motor driveRFMotor;
-extern pros::Motor driveRBMotor;
-extern pros::Motor fwUpperMotor;
-extern pros::Motor fwLowerMotor;
-extern pros::Motor intakeMotor;
+#include "pre_auton_menu.h"
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
  * Motor, you can use the namespace with the following commented out line.

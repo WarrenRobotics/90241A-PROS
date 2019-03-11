@@ -12,6 +12,9 @@
   * @param waitForComplete if the function should wait for the motors to stop
   *        spinning
   */
+
+  //TODO: Remove me
+  int autonomousMode;
 void driveFor(bool reverse, double rev, int vel, bool waitForComplete){
   //Get target encoder ticks(argument to function is in revolutions)
   double distance = rev*900;
@@ -246,22 +249,137 @@ void autonomous() {
       driveFor(true, 1.1, 160, true);
       //Stop intake
       stopIntake();
+      //Back up a little bit
+      driveFor(false, 0.3, 140, true);
       //Delay so bot can turn accruately
       pros::delay(100);
       //Turn right 90 degrees to face alliance park
       turnRight(true, 1, 160, true);
-      //Drive onto alliance park 
+      //Drive onto alliance park
       driveFor(true, 1.5, 200, true);
   }
   //RedFlag NoPark
   if(autonomousMode == 2){
-
+      //Drive to toggle low flag
+      driveFor(true, 4, 200, true);
+      pros::delay(10);
+      //Drive back to adjacenit tile
+      driveFor(false, 2, 200, true);
+      pros::delay(10);
+      //Start up flywheel
+      setFlywheel(200);
+      //Wait until motors are at 95% of target speed
+      while(fwUpperMotor.get_actual_velocity() < 190
+        || fwLowerMotor.get_actual_velocity() < 190){}
+      //Move ball to shoot
+      setIntake(true, 200);
+      //Wait for ball to get shot
+      pros::delay(800);
+      //Stop flywheel and intake
+      stopFlywheel();
+      stopIntake();
+      //Turn bot right 90 degrees
+      turnRight(true, 1, 160, true);
+      //Set intake to flip cap
+      setIntake(false, 200);
+      //Wait for intake to reach some decent level of speed
+      pros::delay(100);
+      //Drive to flip cap
+      driveFor(true, 2, 130, true);
+      //Stop the intake
+      stopIntake();
+      //Turn right 90 degrees
+      turnRight(true, 1, 160, true);
+      //Delay so bot doesnt over/under steer
+      pros::delay(100);
+      //Drive to adjacent tile
+      driveFor(true, 2, 160, true);
+      //Delay so bot can turn more accruately
+      pros::delay(50);
+      //Turn left 90 degrees
+      turnLeft(true, 1, 130, true);
+      //Delay so bot doesn't over/under steer
+      pros::delay(100);
+      //Set intake to scoop ball in
+      setIntake(true, 200);
+      //Drive to the cap to intake ball
+      driveFor(true, 1.1, 160, true);
+      //Stop intake
+      stopIntake();
+      //Delay so bot can turn accruately
+      pros::delay(100);
+      //Back up a little bit
+      driveFor(false, 1.5, 140, true);
+      //Turn left 45 degrees to face middle flag
+      turnLeft(true, 0.5, 160, true);
+      //Start up flywheel
+      setFlywheel(200);
+      //Wait until motors are at 95% of target speed
+      while(fwUpperMotor.get_actual_velocity() < 190
+        || fwLowerMotor.get_actual_velocity() < 190){}
+      //Intake to shoot ball
+      setIntake(true, 200);
+      pros::delay(800);
+      //Stop intake and flywheel
+      stopIntake();
+      stopFlywheel();
   }
+  //RedCap Park
   if(autonomousMode == 3){
-
+    //Drive to cap(and start intake halfway there)
+    driveFor(true, 3.5, 75, false);
+    while(driveLFMotor.get_position() < (0.5 * driveLFMotor.get_target_position())){
+      //Dont hog resources!
+      pros::delay(2);
+    }
+    //Start intake
+    setIntake(true, 100);
+    //Wait unti bot gets there
+    while(!(driveLFMotor.is_stopped() || driveLBMotor.is_stopped() || driveRFMotor.is_stopped() || driveRBMotor.is_stopped())){
+      //Don't hog resources!
+      pros::delay(2);
+    }
+    //Stop intake
+    stopIntake();
+    //Drive back to line up with alliance park
+    driveFor(false, 0.6, 75, true);
+    //Delay to minimize effect of momentum when turning
+    pros::delay(100);
+    //Turn left to face alliance park
+    turnLeft(true, 1, 170, true);
+    //Drive onto platform
+    driveFor(true, 3.75, 200, true);
+    //Delay to minimize effect of momentum when turning
+    pros::delay(400);
+    //Turn right to face middle flag
+    turnRight(true, 0.3, 100, true);
   }
+  //RedCap NoPark
   if(autonomousMode == 4){
-
+    //Start up intake
+    setIntake(true, 200);
+    //Drive to cap
+    driveFor(true, 3.5, 150, true);
+    //Stop intake
+    stopIntake();
+    //Drive back to start tile
+    driveFor(false, 3.5, 200, true);
+    //Delay to minimize effect of momentum when turning
+    pros::delay(100);
+    //Set flywheel
+    setFlywheel(200);
+    //Turn right
+    turnLeft(true, 0.65, 100, true);
+    //Wait until either flywheel motor is spinning at 80% velocity
+    while(fwLowerMotor.get_actual_velocity() < (0.7 * 200)
+        || fwUpperMotor.get_actual_velocity() < (0.7 *200)){}
+    //Funnel ball into flywheel
+    setIntake(true, 100);
+    //Wait for ball to shoot
+    pros::delay(800);
+    //Stop intake and flywheel
+    stopIntake();
+    stopFlywheel();
   }
   if(autonomousMode == 5){
 
