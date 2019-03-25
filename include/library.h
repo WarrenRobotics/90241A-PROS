@@ -1,9 +1,9 @@
 /**
-  * file ports.h
+  * \file library.h
   *
   * This file is used to define the ports of each device plugged
   * into the V5 brain, declare global variables, and declare
-  * devices.
+  * smart devices.
   */
 #ifndef _LIBRARY_H_
 #define _LIBRARY_H_
@@ -20,7 +20,7 @@
 #define INTAKE_PORT                           3
 /*---------------------------Variables-------------------------------*/
 
-/*----------------------------Devices--------------------------------*/
+/*-------------------------Declare Devices---------------------------*/
 //Controller
 extern pros::Controller master;
 //Motors

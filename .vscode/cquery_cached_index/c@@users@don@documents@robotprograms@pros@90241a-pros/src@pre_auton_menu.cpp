@@ -201,7 +201,7 @@ void menu_task(void* param){
 		Maybe something like !autonomous_is_done && !driver_is_done
 	*/
 
-	while(true){
+	while(autonomous_is_done && driver_is_done){
 		/*Update the value of the progress bar based on where the user is*/
 		lv_bar_set_value(progress_bar, progress_bar_percentage);
 

@@ -1,6 +1,10 @@
 #include "main.h"
 
 /*-----------Autonomous Movement Functions--------------*/
+
+//TODO: Remove me
+int autonomousMode;
+
 /**
   * Drives the bot in a specified direction for a certain distance. The
   * power of the motors is defined as well as if the function should wait
@@ -12,9 +16,6 @@
   * @param waitForComplete if the function should wait for the motors to stop
   *        spinning
   */
-
-  //TODO: Remove me
-  int autonomousMode;
 void driveFor(bool reverse, double rev, int vel, bool waitForComplete){
   //Get target encoder ticks(argument to function is in revolutions)
   double distance = rev*900;
